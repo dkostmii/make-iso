@@ -24,7 +24,7 @@
 param(
     [Parameter(Mandatory=$true)]
     [string]$SourceDir,
-    [string]$Output
+    [string]$Output = "image.iso"
 )
 
 if ( -not (Test-Path $SourceDir) ) {
@@ -35,10 +35,6 @@ if ( -not (Test-Path $SourceDir) ) {
 if (Test-Path $SourceDir -PathType Leaf) {
     throw "Expected SourceDir to be directory. Got file: $SourceDir"
     exit 1
-}
-
-if ( -not $Output ) {
-    $Output = "image.iso"
 }
 
 if (Test-Path $Output -PathType Leaf) {
