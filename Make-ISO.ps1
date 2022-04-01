@@ -2,8 +2,12 @@
     .SYNOPSIS
     Create ISO-file from directory
 
+    .DESCRIPTION
+    Script to create ISO-file from directory using open-source WinCDEmu utility for Windows. Requires mkisofs utility, which is shipped with WinCDEmu build.
+    For more information check the README.md
+
     .PARAMETER SourceDir
-    Directory, contents of which put to new ISO-file
+    Directory, contents of which put to new ISO-file. 
 
     .PARAMETER Output
     The name of new ISO-file. Default is image.iso
@@ -12,7 +16,7 @@
     None.
 
     .OUTPUTS
-    Displays output from mkisofs utility
+    None.
 
     .EXAMPLE
     PS> .\Make-ISO.ps1 -SourceDir HelloWorld
@@ -47,4 +51,16 @@ if (Test-Path $Output -PathType Leaf) {
     Remove-Item $Output | Out-Null
 }
 
+try {
+    Get-Command mkisofs -ErrorAction Stop | Out-Null
+}
+catch {
+    Write-Host "mkisofs utility not found." -ForegroundColor Red
+    Write-Host "Make sure that C:\Program Files (x86)\WinCDEmu\ is in the path.`nRead README.md for full information." -ForegroundColor Yellow
+    exit 1
+}
+
+Write-Host "`nWriting $SourceDir to $Output image...`n" -ForegroundColor Green
 mkisofs -o $Output -J -R -l $SourceDir
+
+Write-Host "`nDone." -ForegroundColor Green
