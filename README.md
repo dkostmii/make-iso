@@ -12,3 +12,8 @@ Make sure to append `C:\Program Files (x86)\WinCDEmu\` to **PATH**:
     ```
 
 - find **PATH** variable and add mentioned `WinCDEmu` directory
+
+## Requirements
+
+- [PowerShell Core v7](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows)
+- [WinCDEmu](https://github.com/sysprogs/WinCDEmu/releases)
