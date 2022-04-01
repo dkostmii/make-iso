@@ -1,3 +1,6 @@
+# Ignore all but the ps1, md and .gitignore files
+
 *
-!*.[ps1|md]
+!*.ps1
+!*.md
 !.gitignore
